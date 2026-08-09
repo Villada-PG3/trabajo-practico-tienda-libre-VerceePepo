@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Categoria(models.Model):
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     
     class Meta:
@@ -21,14 +21,14 @@ class Producto(models.Model):
     precio = models.DecimalField(decimal_places=2, max_digits=10)
     stock = models.PositiveIntegerField()
     marca = models.CharField(max_length=100, blank=True)
-    imagen_url = models.URLField(blank=True)
+    imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     disponible = models.BooleanField(default=True)
     
 
     class Meta:
         verbose_name = 'Producto'
-        verbose_name_plural = 'Productos'
+        verbose_name_plural = 'productos'
         ordering = ['nombre']
 
     def __str__(self):

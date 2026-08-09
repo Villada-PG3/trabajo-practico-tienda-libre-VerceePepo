@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - TiendaLibre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background-color: #f3f4f6;
+            color: #1f2937;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 480px;
+            width: 100%;
+        }
+        .badge {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #4338ca;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+        p {
+            color: #6b7280;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+        .btn:hover {
+            background-color: #4338ca;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <span class="badge">E-Commerce Django</span>
+        <h1>¡Bienvenido a TiendaLibre!</h1>
+        <p>Tu plataforma de comercio electrónico. Explora nuestros productos y disfruta de la mejor experiencia de compra.</p>
+        <a href="/acerca_de_mi/" class="btn">Conocer al Desarrollador &rarr;</a>
+    </div>
+</body>
+</html>
