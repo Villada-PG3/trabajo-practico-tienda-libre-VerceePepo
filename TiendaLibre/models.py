@@ -25,6 +25,7 @@ class Producto(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     disponible = models.BooleanField(default=True)
     
+    
 
     class Meta:
         verbose_name = 'Producto'
