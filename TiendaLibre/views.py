@@ -23,6 +23,8 @@ def home(request):
         {'nombre': 'Alfajor', 'precio': 200, 'stock': 12},
         {'nombre': 'Tatin', 'precio': 100, 'stock': 2},
         {'nombre': '67', 'precio': 67, 'stock': 67},
+        {'nombre': 'Ferra', 'precio': 2000, 'stock': 1},
+        {'nombre': None, 'precio': 200, 'stock': 0},
     ]
         
     
