@@ -19,7 +19,7 @@ def productos(request):
 
 def home(request):
     productos_oferta = [
-        {'nombre': 'Sanguche', 'precio': 120, 'stock': 6},
+        {'nombre': 'Sanguche', 'precio': None, 'stock': 6},
         {'nombre': 'Alfajor', 'precio': 200, 'stock': 12},
         {'nombre': 'Tatin', 'precio': 100, 'stock': 2},
         {'nombre': '67', 'precio': 67, 'stock': 67},
