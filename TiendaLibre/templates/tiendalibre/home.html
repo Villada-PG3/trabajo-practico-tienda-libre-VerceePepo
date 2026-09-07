@@ -9,9 +9,7 @@
         {% if usuario_logueado %}
     <div class="text-center my-4 py-3">
         <p class="lead text-secondary fw-normal">Encuentra tus productos favoritos en nuestra tienda en línea.</p>
-        <div>
-            <a href="{% url 'productos' %}" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm mt-2 transition-all">Explorar Productos</a>
-        </div>
+        
     </div>
 
     <div class="mt-5">
@@ -38,11 +36,16 @@
                                 
                                 
                             </div>
+                            <div class="pt-3 border-top mt-3">
+                                <p class="card-text text-muted mb-2"> Creado en: {{ producto.fecha_creacion|default:"Sin Fecha" }}</p>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             {% endfor %}
-            <p class="mt-4">Total de productos encontrados: {{productos_en_oferta|length}} </p>
+        </div>
+            <p class="mt-4">Total de productos encontrados: {{Productos|length}} </p>
         </div>
     </div>
 

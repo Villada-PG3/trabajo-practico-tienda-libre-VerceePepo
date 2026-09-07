@@ -1,4 +1,4 @@
-from tiendalibre.models import Producto, Categoria
+from TiendaLibre.models import Producto, Categoria
 
 Producto.objects.all()
 
