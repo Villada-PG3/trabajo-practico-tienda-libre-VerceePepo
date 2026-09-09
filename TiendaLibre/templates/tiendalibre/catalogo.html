@@ -13,7 +13,8 @@
                 <div class="card h-100 border-0 shadow-sm hover-shadow transition-all rounded-3 overflow-hidden">
                     <div class="card-body d-flex flex-column justify-content-between p-4">
                         <div>
-                            <h5 class="card-title text-dark fw-bold mb-3">{{ producto.nombre|default:"Sin Nombre" }}</h5>
+                            
+                            <a href="{% url 'detalle' producto.id %}" class="card-title text-dark fw-bold mb-3">{{ producto.nombre|default:"Sin Nombre" }}</a>
                             <p class="card-text text-muted mb-2">{{ producto.marca|default:"Sin Marca" }}</p>
                             <p class="card-text text-muted mb-2">{{ producto.descripcion|truncatechars:30|default:"Sin Descripción" }}</p>
                             <div class="d-flex align-items-baseline mb-2">
@@ -31,6 +32,7 @@
 
                             
                         </div>
+                        <a href="/detalle/{{producto.id}}" class="btn btn-primary mt-3">Ver Detalle</a>
                     </div>
                 </div>
             </div>

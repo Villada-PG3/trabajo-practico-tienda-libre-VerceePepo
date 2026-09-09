@@ -1,0 +1,53 @@
+{% extends "tiendalibre/base.html" %}
+
+{% block title%} {{ producto.nombre }} - Detalle del Producto
+
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <a href ="/catalogo" class="btn btn-outline-primary mt-3 fs-5">&larr; Volver al catalogo</a>
+</div>
+<div class="container my-5">
+    <div class="card shadow">
+        
+        <div class="row g-0">
+            
+            <div class="col-md-4">
+                
+                <img src="{{ producto.imagen.url }}" class="img-fluid rounded-start" alt= "Imagen de {{ producto.nombre }}"  >
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    
+                    <h3 class="card-title text-dark fw-bold mb-3">{{ producto.nombre|default:"Sin Nombre" }}</h3>
+                    <h5 class="card-text text-muted mb-2">{{ producto.marca|default:"Sin Marca" }}</h5>
+                    <h5 class="card-text text-muted mb-2">{{ producto.descripcion|default:"Sin Descripción" }}</h5>
+                    <div class="d-flex align-items-baseline mb-2">
+                        <span class="text-muted me-1 fs-6">$</span>
+                        <span class="fs-4 fw-bold text-primary text-align-center">{{ producto.precio|floatformat:2|default:"Sin Precio" }}</span>
+                    </div>
+                    <div >
+                    {% if producto.stock > 0 %}
+                        <span class="badge bg-success text-white border px-2 py-1 fs-6">En stock</span> {{ producto.stock }} unidades</span>
+                    {% else %}
+                        <span class="badge bg-danger text-white border px-2 py-1 fs-6">Agotado</span>
+                    {% endif %}
+                    
+                    <div class="pt-3 border-top mt-3">
+                        
+                    </div>
+                    
+                    
+
+                    <a href="/detalle/{{producto.id}}" class="btn btn-primary">Agregar al Carrito</a>
+                </div>
+                
+            </div>
+        </div>
+        <footer class="card-footer p-2 text-muted text-center">
+            <small class="text-muted fw-semibold text-align-center">Creado en: {{ producto.fecha_creacion|default:"Sin Fecha"|date:"d/m/Y" }}</small>
+        </footer>
+    </div>
+</div>
+{% endblock %}

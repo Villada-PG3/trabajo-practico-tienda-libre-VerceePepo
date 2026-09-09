@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Categoria(models.Model):
+    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     
@@ -16,6 +17,7 @@ class Categoria(models.Model):
 
 class Producto(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='productos', null=True, blank=True)
+    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
     precio = models.DecimalField(decimal_places=2, max_digits=10)

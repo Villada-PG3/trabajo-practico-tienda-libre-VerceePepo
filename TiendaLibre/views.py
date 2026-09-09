@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Producto, Categoria
+from django.shortcuts import get_object_or_404
 
 
 
@@ -29,3 +30,10 @@ def catalogo(request):
         'productos': productos
     }
     return render(request, 'tiendalibre/catalogo.html', context)
+
+def detalle(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    context = {
+        'producto': producto
+    }
+    return render(request, 'tiendalibre/detalle.html', context)
