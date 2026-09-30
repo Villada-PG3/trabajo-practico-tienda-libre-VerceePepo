@@ -15,7 +15,10 @@
             
             <div class="col-md-4">
                 
-                <img src="{{ producto.imagen.url }}" class="img-fluid rounded-start" alt= "Imagen de {{ producto.nombre }}"  >
+                {% if producto.imagen %}
+                    <img src="{{ producto.imagen.url }}" class="img-fluid rounded-start" alt="{{ producto.nombre|default:'Imagen del producto' }}">
+
+                {% endif %}
             </div>
             <div class="col-md-8">
                 <div class="card-body">
