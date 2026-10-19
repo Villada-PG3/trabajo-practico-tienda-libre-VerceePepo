@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 from .models import Producto, Categoria
 from django.shortcuts import get_object_or_404
-from django.views.generic import ListView
+
 
 
 class HolaTemplateView(TemplateView):
@@ -32,12 +32,13 @@ class CatalogoView(ListView):
     template_name = 'tiendalibre/catalogo.html'
     context_object_name = 'productos'
     queryset = Producto.objects.filter(disponible=True).order_by('stock')
+    paginate_by = 8
+    
 
 
 
-def detalle(request, producto_id):
-    producto = get_object_or_404(Producto, id=producto_id)
-    context = {
-        'producto': producto
-    }
-    return render(request, 'tiendalibre/detalle.html', context)
+class DetalleView(DetailView):
+    model = Producto
+    template_name = 'tiendalibre/detalle.html'
+    context_object_name = 'producto'
+    
