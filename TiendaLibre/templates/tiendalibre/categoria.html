@@ -1,0 +1,90 @@
+{% extends "tiendalibre/base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="display-4 fw-bold text-primary text-center my-5">Productos de {{categoria}}</h1>
+    <p class="lead text-secondary text-center mb-5">Mostrando {{productos|length}} productos.</p>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for producto in productos %}
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition-all rounded-3 overflow-hidden">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre|default:'Imagen del producto' }}">
+                    {% endif %}
+                    
+                    <div class="card-body d-flex flex-column justify-content-between p-4">
+                        <div>
+                            
+                            <a href="{% url 'detalle' producto.id %}" class="card-title text-dark fw-bold mb-3">{{ producto.nombre|default:"Sin Nombre" }}</a>
+                            <p class="card-text text-muted mb-2">{{ producto.marca|default:"Sin Marca" }}</p>
+                            <p class="card-text text-muted mb-2">{{ producto.descripcion|truncatechars:30|default:"Sin Descripción" }}</p>
+                            <div class="d-flex align-items-baseline mb-2">
+                                <span class="text-muted me-1 fs-6">$</span>
+                                <span class="fs-4 fw-bold text-primary text-align-center">{{ producto.precio|floatformat:2|default:"Sin Precio" }}</span>
+                            </div>
+                        </div>
+                        <div class="pt-3 border-top mt-3 d-flex justify-content-between align-items-center">
+                            {% if producto.stock > 0 %}
+                            <span class="badge bg-success text-white border px-2 py-1 fs-6">En stock</span>{{ producto.stock }} unidades</span>
+                            {% else %}
+                            <span class="badge bg-danger text-white border px-2 py-1 fs-6">Agotado</span>
+                            {% endif %}
+                        
+
+                            
+                        </div>
+                        <a href="/detalle/{{producto.id}}" class="btn btn-primary mt-3">Ver Detalle</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            
+        {% endfor %}
+    </div>
+        {% if is_paginated %}
+            <div class="col-12">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center mt-4">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link" aria-hidden="true">&laquo;</span>
+                            </li>
+                        {% endif %}
+
+                        {% for num in paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link" aria-hidden="true">&raquo;</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}
+

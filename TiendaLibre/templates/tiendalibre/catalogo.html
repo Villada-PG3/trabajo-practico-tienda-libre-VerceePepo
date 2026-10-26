@@ -7,6 +7,21 @@
 <div class="container">
     <h1 class="display-4 fw-bold text-primary text-center my-5">Catálogo de Productos</h1>
     <p class="lead text-secondary text-center mb-5">Mostrando {{productos|length}} productos.</p>
+    <form method="GET" class="mb-4">
+        <div class="input-group">
+            <input
+                type="text"
+                name="q"
+                class="form-control"
+                placeholder="Buscar productos..."
+                value="{{ request.GET.q|default:'' }}"
+            >
+    
+            <button type="submit" class="btn btn-primary">
+                Buscar
+            </button>
+        </div>
+    </form>
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {% for producto in productos %}
             <div class="col">
